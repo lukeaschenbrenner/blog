@@ -5,7 +5,7 @@ import BlogFooter from '@/components/BlogFooter.astro'
 import {getCollectionByName} from "@/utils/getCollectionByName";
 import {sortPostsByDate} from "@/utils/sortPostsByDate";
 import Donate from '@/components/Donate.astro'
-import {donate} from "@/consts";
+// import {donate} from "@/consts";
 import getUrl from "@/utils/getUrl";
 
 export async function getStaticPaths() {
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const {entry} = Astro.props;
+const {entry} = Astro.props as Astro.Props;
 const {Content, remarkPluginFrontmatter} = await entry.render();
 
 const lastModified = remarkPluginFrontmatter.lastModified
@@ -72,10 +72,10 @@ if (sortPosts[currentPostIndex + 1]) {
       }
     </div>
     <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.slug} date={entry.data.date}></BlogFooter>
-    {
+    <!-- {
       donate.enable && entry.data.donate &&
       <Donate></Donate>
-    }
+    } -->
   </div>
 
 </BlogPost>

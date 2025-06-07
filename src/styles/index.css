@@ -1,5 +1,5 @@
 @import url('./github-markdown.css');
-@import "remixicon/fonts/remixicon.css";
+@import "remixicon/fonts/remixicon.css"; /* this /remixicon path is created by the npm module with the same name. Allows automatic import of icons with ".ri-" class */
 @import "tocbot/dist/tocbot.css";
 @import "remark-aside.css";
 @tailwind base;
@@ -12,7 +12,7 @@
 }
 
 /**
-覆写tailwindcss 默认样式
+Override tailwind css default style
  */
 
 html {
@@ -59,13 +59,13 @@ menu {
     --color-modal: 251, 251, 251;
   }
 
-  #sun-icon,
-  html[data-theme="dark"] #moon-icon {
+  #moon-icon,
+  html[data-theme="dark"] #sun-icon {
     display: none;
   }
 
-  #moon-icon,
-  html[data-theme="dark"] #sun-icon {
+  #sun-icon,
+  html[data-theme="dark"] #moon-icon {
     display: block;
   }
 
@@ -73,26 +73,26 @@ menu {
 
 @layer components {
 
-  /* 导航栏的按钮样式 */
+/* Navigation bar button style */
   .header-link-active {
-    @apply underline underline-offset-4 decoration-wavy decoration-skin-active;
+    @apply underline underline-offset-8 decoration-skin-active decoration-[length:5px];
   }
 
   .header-link-hover {
-    @apply underline underline-offset-4 decoration-wavy decoration-skin-base;
+    @apply underline underline-offset-8 decoration-skin-base decoration-[length:5px];
   }
 
   .header-btn {
     @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mx-2 z-10
   }
 
-  /*侧边栏每个栏目共有样式*/
+/* Each column in the sidebar has a common style */
   .aside-widget {
     @apply flex items-center w-full mb-2;
     border-bottom:  1px solid rgba(var(--color-text), .3);
   }
 
-  /* 侧边最近评论列表样式 */
+/* Side recent comments list style */
   .waline-comment-content {
     @apply p-1 overflow-auto max-h-72 break-words hover:text-skin-active;
   }
@@ -109,7 +109,7 @@ menu {
     @apply text-xl mr-2
   }
 
-  /* markdown内容图片样式 */
+/* markdown content image style */
   .image-cols-2 {
     @apply grid gap-4 grid-cols-2 my-2
   }
@@ -127,7 +127,7 @@ menu {
   scroll-behavior: smooth;
 }
 
-/* 分割线 */
+/* dividing line */
 .divider-vertical {
   height: .9em;
   width: 1px;
@@ -155,7 +155,7 @@ menu {
   background-color: rgba(var(--color-text), .2);
 }
 
-/* 重写markdown样式 */
+/* Overwrite markdown style */
 .markdown-body {
   background-color: inherit;
 }
@@ -169,7 +169,7 @@ a {
   line-height: 26px;
 }
 
-/* 修改waline评论侧边栏样式 */
+/* Edit the waline comment sidebar style */
 .waline-comment-content-author {
   text-align: end;
   margin-bottom: 6px;
@@ -180,14 +180,14 @@ a {
   display: inline-block;
 }
 
-/*  网站列表样式清空 */
+/* Clear website list style */
 ul,
 ol,
 menu {
   list-style: none;
 }
 
-/* markdown 列表样式 */
+/* markdown list style */
 .markdown-body menu,
 .markdown-body ul {
   list-style: disc;
@@ -197,12 +197,12 @@ menu {
   list-style: decimal;
 }
 
-.markdown-body img {
-  /* 修改图片居中 */
+/*.markdown-body img {
+/* Center images */
   /* margin: 0 auto; */
-}
+/*}*/
 
-/* 修改滚动条样式 */
+/* Modify the scrollbar style */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -215,7 +215,7 @@ menu {
   border-radius: 4px;
 }
 
-/* 置顶文字样式 */
+/* Sticky text style */
 .post-sticky {
   font-weight: 400;
   height: 20px;
@@ -231,8 +231,8 @@ menu {
   border-radius: 2px 6px;
 }
 
-/* 修复toc 样式问题*/
-/*  覆写toc选中的链接文字颜色 */
+/* Fix toc style issue */
+/* Override the text color of the link selected in toc */
 .is-active-link {
   color: rgb(var(--color-text-active)) !important;
 }
@@ -241,7 +241,7 @@ menu {
   color: rgb(var(--color-text-active));
 }
 
-/* tocbot自带的border样式会穿透有问题，以被覆写 */
+/* Tocbot's own border style will have problems and should be overwritten */
 .toc-link::before {
   display: none !important;
 }

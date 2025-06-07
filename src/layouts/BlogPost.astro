@@ -45,7 +45,6 @@ const {
       }
     </div>
     <div class="hidden xl:block col-span-1 relative">
-      <Profile></Profile>
       {
         frontmatter.toc &&
         <Toc></Toc>
@@ -64,9 +63,9 @@ const {
   import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
   Fancybox.bind("[data-fancybox]");
-  // 给所有的a标签添加target属性和不追踪
+// Add target attribute and no tracking to all a tags
   const markdownBody = document.querySelector(".markdown-body");
-  // 如果没有markdownBody则直接返回
+// If there is no markdownBody, return directly
   if (markdownBody) {
     let images = markdownBody.querySelectorAll("img");
     const callback = (entries) => {
@@ -93,9 +92,9 @@ const {
     });
 
     var links = markdownBody.querySelectorAll("a");
-    // 循环遍历链接标签
+// Loop through the link tags
     for (var i = 0; i < links.length; i++) {
-      // 给每个链接标签添加 target 属性
+// Add the target attribute to each link tag
       let names = links[i].getAttributeNames()
       if (!names.includes('data-footnote-backref') && !names.includes('data-footnote-ref')) {
         links[i].setAttribute("target", "_blank");

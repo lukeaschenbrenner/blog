@@ -6,7 +6,7 @@
       "es2020"
     ],
     "target": "es2019",
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "isolatedModules": false,
     "resolveJsonModule": true,
     "sourceMap": true,
@@ -14,6 +14,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": false,
     "strictNullChecks": false,
+    "noImplicitAny": false,
     "allowJs": false,
     "checkJs": false,
     "baseUrl": ".",
@@ -30,7 +31,8 @@
   },
   "include": [
     ".astro/types.d.ts",
-    "**/*"
+    "**/*",
+    "src/types/astro.d.ts"
   ],
   "exclude": [
     "node_modules",

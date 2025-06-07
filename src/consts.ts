@@ -1,6 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
+import type { Dictionary, List } from "lodash"
 import type {AnalyticsConfig} from "./types/analyticsTypes"
 
 /**
@@ -15,47 +16,34 @@ import type {AnalyticsConfig} from "./types/analyticsTypes"
  * recentBlogSize {number} Number of recent articles displayed in the sidebar
  * archivePageSize {number} Number of articles on archive pages
  * postPageSize {number} Number of articles on blog pages
- * feedPageSize {number} Number of articles on feed pages
- * beian {string} Chinese policy
  * asideTagsMaxSize {number}
  *    0: disable,
  *    > 0: display the limited number of tags in the sidebar
  *    All tags will be displayed in single page "/tags".
  */
 export const site = {
-  title: 'Astro Theme Yi', // required
+  title: 'Luke Aschenbrenner', // required
   favicon: '/favicon.svg', // required
-  description: 'Welcome to my independent blog website! ',
-  author: "Astro-Yi", // required
-  avatar: '/avatar.png', // required
-  url: 'https://astro-yi-nu.vercel.app', // required
+  description: 'Kicking it like it\'s 2010.',
+  author: "Luke", // required
+  avatar: '/avatar.jpg', // required
+  url: 'http://localhost', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
-  motto: 'Actions speak louder than words.',
+  motto: 'This is a motto',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
-  feedPageSize: 20,
-  beian: '',
   asideTagsMaxSize: 0,
 }
 
 /**
- * busuanzi {boolean} link: https://busuanzi.ibruce.info/
  * lang {string} Default website language
  * codeFoldingStartLines {number}
  * ga {string|false}
- * memosUrl {string} memos server url
- * memosUsername {string} memos login name
- * memosPageSize {number} 10
  */
 export const config = {
   lang: 'en', // en | zh-cn | zh-Hant | cs
-  codeFoldingStartLines: 16, // Need to re-run the project to take effect
-
-  // memos config
-  memosUrl: '', // https://xxxx.xxx.xx
-  memosUsername: '', // login name
-  memosPageSize: 10, // number
+  codeFoldingStartLines: 30, // Need to re-run the project to take effect
 }
 
 /**
@@ -65,17 +53,17 @@ export const config = {
  * href {string}  link url
  * target {string} optional "_self|_blank" open in current window / open in new window
  */
-export const categories = [
+export const categories: Dictionary<any> = [
   {
     name: "Blog",
     iconClass: "ri-draft-line",
     href: "/blog/1",
   },
-  {
-    name: "Feed",
-    iconClass: "ri-lightbulb-flash-line",
-    href: "/feed/1",
-  },
+  // {
+  //   name: "Feed",
+  //   iconClass: "ri-lightbulb-flash-line",
+  //   href: "/feed/1",
+  // },
   // {
   //   name: "Memos",
   //   iconClass: "ri-quill-pen-line",
@@ -97,44 +85,37 @@ export const categories = [
     href: "/search",
   },
   {
-    name: "More",
-    iconClass: "ri-more-fill",
-    href: "javascript:void(0);",
-    children: [
-      {
-        name: 'About',
-        iconClass: 'ri-information-line',
-        href: '/about',
-      },
-      {
-        name: 'Friends',
-        iconClass: 'ri-user-5-line',
-        href: '/friends',
-        target: '_self',
-      },
-    ]
+    name: 'About',
+    iconClass: 'ri-information-line',
+    href: '/about',
+  },
+  {
+    name: "Cool Sites",
+    iconClass: 'ri-ie',
+    href: '/links',
   }
+  
 ]
 
 /**
  * Personal link address
  */
 export const infoLinks = [
-  {
-    icon: 'ri-telegram-fill',
-    name: 'telegram',
-    outlink: '',
-  },
-  {
-    icon: 'ri-twitter-fill',
-    name: 'twitter',
-    outlink: '',
-  },
-  {
-    icon: 'ri-instagram-fill',
-    name: 'instagram',
-    outlink: '',
-  },
+  // {
+  //   icon: 'ri-telegram-fill',
+  //   name: 'telegram',
+  //   outlink: '',
+  // },
+  // {
+  //   icon: 'ri-twitter-fill',
+  //   name: 'twitter',
+  //   outlink: '',
+  // },
+  // {
+  //   icon: 'ri-instagram-fill',
+  //   name: 'instagram',
+  //   outlink: '',
+  // },
   {
     icon: 'ri-github-fill',
     name: 'github',
@@ -155,16 +136,16 @@ export const infoLinks = [
  * alipayQRCode: Image addresses should be placed in the public directory.
  * paypalUrl {string}
  */
-export const donate = {
-  enable: false,
-  tip: "Thanks for the coffee !!!☕",
-  wechatQRCode: "/WeChatQR.png",
-  alipayQRCode: "/AliPayQR.png",
-  paypalUrl: "https://paypal.me/xxxxxxxxxx",
-}
+// export const donate = {
+//   enable: false,
+//   tip: "Thanks for the coffee !!!☕",
+//   wechatQRCode: "/WeChatQR.png",
+//   alipayQRCode: "/AliPayQR.png",
+//   paypalUrl: "https://paypal.me/xxxxxxxxxx",
+// }
 
 /**
- * Friendship Links Page
+ * Friendship Links Page (Other cool pages)
  * name {string}
  * url {string}
  * avatar {string}
@@ -172,12 +153,12 @@ export const donate = {
  */
 export const friendshipLinks =
   [
-    // {
-    //   name: "Cirry's Blog",
-    //   url: 'https://cirry.cn',
-    //   avatar: "https://cirry.cn/avatar.png",
-    //   description: '前端开发的日常'
-    // },
+    {
+      name: "Cirry's Blog",
+      url: 'https://cirry.cn',
+      avatar: "https://cirry.cn/avatar.png",
+      description: 'Placeholder for their nice Astro theme'
+    },
   ]
 
 /**
@@ -195,7 +176,7 @@ export const friendshipLinks =
  * walineConfig.whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
-  enable: false,
+  enable: true,
   type: 'giscus', // waline | giscus,
   walineConfig: {
     serverUrl: "",
@@ -206,7 +187,7 @@ export const comment = {
     pageview: true,
     reaction: true,
     requiredMeta: ["nick", "mail"],
-    whiteList: ['/message/', '/friends/'],
+    // whiteList: ['/message/', '/friends/'],
   },
 
   // giscus config

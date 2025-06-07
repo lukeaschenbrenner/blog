@@ -86,7 +86,6 @@ The only profile for this blog is: `src/consts.ts`, you can make some modificati
  * archivePageSize {number} Number of articles on archive pages
  * postPageSize {number} Number of articles on blog pages
  * feedPageSize {number} Number of articles on feed pages
- * beian {string} Chinese policy
  */
 export const site = {
     title: 'Astro Theme Yi',
@@ -100,7 +99,6 @@ export const site = {
     archivePageSize: 25,
     postPageSize: 10,
     feedPageSize: 20,
-    beian: ''
   }
 
 /**
@@ -338,7 +336,7 @@ date: 2024-03-05
 tags: [astro]
 category: astro
 sticky: 100  // Document top weight, the larger the number, the greater the weight
-slug: poem/ci //  Permanent link to document
+slug: poem/ci //  Permanent link to document -- slug is a permalink override to the default Astro collections 'id', which is generated from the .md filename.
 mathjax: false // enable formula display
 mermaid: false // enable mermaid
 draft: false

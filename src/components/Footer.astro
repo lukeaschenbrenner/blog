@@ -25,14 +25,6 @@ let shouldLoadBusuanzi = analytics.enable && analytics.busuanzi
       <i class="ri-copyright-line align-middle"></i>
       <span class="align-middle">{new Date().getFullYear()}</span>
     </div>
-    {
-      site.beian && (
-        <div class="divider-vertical hidden sm:block"></div>
-        <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">
-          {site.beian}
-        </a>
-      )
-    }
     <div class="divider-vertical"></div>
     <a href={getUrl("/sitemap-0.xml")}>{t('footer.sitemap')}</a>
   </div>
