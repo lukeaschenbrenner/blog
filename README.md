@@ -1,47 +1,54 @@
-# Astro Theme Yi
+In Astro-Yi, You need to set two important properties: **title** and **date**, the following is the simplest frontmatter setup for a Md document:
 
-[[English]](./README.md) | [[简体中文]](./README-ZH-CN.md)
+```yaml
+---
+title: Display pictures
+date: 2024-03-05
+---
+```
 
-Demo：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
+If you feel that this is not quite enough, Yi also provides more properties for you to use, this is a complete example:
 
-A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
+```yaml
+---
+title: Display pictures
+description: Display pictures
+date: 2024-03-05
+tags: [astro]
+category: astro
+sticky: 100  // Document top weight, the larger the number, the greater the weight
+slug: poem/ci //  Permanent link to document -- slug is a permalink override to the default Astro collections 'id', which is generated from the .md filename.
+mathjax: false // enable formula display
+mermaid: false // enable mermaid
+draft: false
+toc: true
+donate: false
+comment: false
+ogImage: https://xxxxx/xxxxx/xxxxx // cover image
+---
+```
+```ts
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional().nullable(),
+    date: z.date(),
+    tags: z.array(z.string()).or(z.string()).optional().nullable(),
+    category: z.array(z.string()).or(z.string()).default('uncategorized').nullable(),
+    sticky: z.number().default(0).nullable(),
+    mathjax: z.boolean().default(false).nullable(),
+    mermaid: z.boolean().default(false).nullable(),
+    draft: z.boolean().default(false).nullable(),
+    toc: z.boolean().default(true).nullable(),
+    donate: z.boolean().default(true).nullable(),
+    comment: z.boolean().default(true).nullable(),
+    ogImage: z.string().optional()
+  }),
+});
+```
 
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/9.png)
-
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/1.png)
-
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/8.png)
-
-### 🔥 Features
-
-- [x] Support github pages.
-- [x] Supports multi-platform display.
-- [x] Supports dark mode.
-- [x] Supports Memos.
-- [x] supports i18n.
-- [x] Supports search functionality.
-- [x] SEO-friendly
-- [x] Supports sitemap and RSS.
-- [x] Supports article drafts.
-- [x] Supports Waline/Giscus Comment.
-- [x] Image lazy loading and scaling support.
-- [x] Supports fixed permalinks for articles.
-- [x] Supports meriand
-- [x] Supports mathjax
-- [x] Supports expressive code
-
-......
-
-### Vercel Deplyment
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Fcirry%2Fastro-yi)
-
-Give it a try! Click the button above, and you can deploy with just one click.
-
-### 👨🏻‍💻 Manual Installation
-
-Recommended for use `nodejs >= 18`，`pnpm >= 8`。
-
+# Installation
 ```bash
 git clone https://github.com/cirry/astro-yi.git
 cd astro-yi
@@ -317,47 +324,6 @@ According to Astro's Markdown document standard, each document should have its o
 
 2. For example, to avoid using Chinese as the blog path and file name, we can set `title` as the title of the md document in Chinese, and the file name in English with `-` as the word connecting symbol.
 
-In Astro-Yi, You need to set two important properties: **title** and **date**, the following is the simplest frontmatter setup for a Md document:
-
-```yaml
----
-title: Display pictures
-date: 2024-03-05
----
-```
-
-If you feel that this is not quite enough, Yi also provides more properties for you to use, this is a complete example:
-
-```yaml
----
-title: Display pictures
-description: Display pictures
-date: 2024-03-05
-tags: [astro]
-category: astro
-sticky: 100  // Document top weight, the larger the number, the greater the weight
-slug: poem/ci //  Permanent link to document -- slug is a permalink override to the default Astro collections 'id', which is generated from the .md filename.
-mathjax: false // enable formula display
-mermaid: false // enable mermaid
-draft: false
-toc: true
-donate: false
-comment: false
-ogImage: https://xxxxx/xxxxx/xxxxx // cover image
----
-```
-
-### Write a feed
-
-With the Yi theme, all you need to do is create a new md document in `src/content/feed` and you're ready to start writing.
-
-feed frontmatter needs to set an important property **date**, the rest of the attributes are optional.
-
-```yaml
----
-date: 2024-03-20
----
-```
 
 ### Modify icons
 
@@ -372,12 +338,4 @@ export default defineConfig({
   site: 'https://xxxx.com',// Modify to your own website address
   // ...
 })
-```
-
-Add a line to the path of your sitemap file at the end of the robots.txt file in the public directory.
-
-
-```text
-Sitemap: [blog-url]/sitemap-0.xml
-// ps：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
 ```

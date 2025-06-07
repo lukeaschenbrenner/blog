@@ -3,7 +3,6 @@
 
 import type { Dictionary, List } from "lodash"
 import type {AnalyticsConfig} from "./types/analyticsTypes"
-
 /**
  * title {string} website title
  * favicon {string} website favicon url
@@ -27,7 +26,7 @@ export const site = {
   description: 'Kicking it like it\'s 2010.',
   author: "Luke", // required
   avatar: '/avatar.jpg', // required
-  url: 'http://localhost', // required
+  url: 'https://luke.su', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
   motto: 'This is a motto',
   recentBlogSize: 5,
@@ -192,18 +191,18 @@ export const comment = {
 
   // giscus config
   giscusConfig: {
-    'data-repo': "",
-    'data-repo-id': "",
-    'data-category': "",
-    'data-category-id': "",
-    'data-mapping': "",
-    'data-strict': "",
-    'data-reactions-enabled': "",
-    'data-emit-metadata': "",
-    'data-input-position': "",
-    'data-theme': "",
-    'data-lang': "",
-    'crossorigin': "",
+    'data-repo': "lukeaschenbrenner/blog",
+    'data-repo-id': "R_kgDOO348rA",
+    'data-category': "Announcements",
+    'data-category-id': "DIC_kwDOO348rM4CrLA0",
+    'data-mapping': "pathname",
+    'data-strict': "0",
+    'data-reactions-enabled': "1",
+    'data-emit-metadata': "0",
+    'data-input-position': "top",
+    'data-theme': "preferred_color_scheme", //getPreferTheme?
+    'data-lang': "en",
+    'crossorigin': "anonymous",
   }
 
   //
