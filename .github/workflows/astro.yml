@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "."  # adjust if your Astro project lives in a subfolder
+  BUILD_PATH: "."
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
-          cache-dependency-path: package-lock.json  # <— crucial!
+          cache-dependency-path: blog/package-lock.json
 
       - name: Install dependencies
         run: npm ci
